@@ -7,18 +7,6 @@
 #![forbid(unsafe_code)]
 #![warn(unused_imports, missing_docs)]
 
-use bevy::app::{AppBuilder, Plugin};
-use std::marker::PhantomData;
-
-/// Bevy [Plugin] to keep track of any kind of progress in your application
-pub struct ProgressTracker;
-
-impl Plugin for ProgressTracker {
-    fn build(&self, app: &mut AppBuilder) {
-        app.init_resource::<Progress>();
-    }
-}
-
 #[derive(Clone, Default, Debug, PartialEq)]
 struct TaskProgress {
     tasks: usize,
@@ -26,16 +14,11 @@ struct TaskProgress {
 }
 
 /// Resource that keeps record of current, previous and persisted progress
-///
-/// If you want to track different kinds of progress in parallel, you can use the
-/// generic parameter to keep multiple progress resources.
 #[derive(Default, Debug)]
-pub struct Progress<T = ()> {
+pub struct Progress {
     current: TaskProgress,
     previous: TaskProgress,
     persisted: TaskProgress,
-
-    _marker: PhantomData<T>,
 }
 
 /// Convenience enum to mark a single task as `in progress` or `done`
@@ -69,7 +52,7 @@ impl TaskProgress {
     }
 }
 
-impl <T> Progress<T> {
+impl Progress {
     /// track the given amount of tasks of wich some can already be completed
     pub fn track(&mut self, tasks: usize, done: usize) {
         self.current.tasks += tasks;

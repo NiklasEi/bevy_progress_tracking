@@ -2,6 +2,12 @@
 name = "bevy_progress_tracking"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]
-bevy = { version = "0.5.0", default-features = false }
+authors = ["Niklas Eicker <git@nikl.me>"]
+license = "MIT OR Apache-2.0"
+description = "Utility to track progress in Bevy Apps"
+repository = "https://github.com/NiklasEi/bevy_progress_tracking"
+homepage = "https://github.com/NiklasEi/bevy_progress_tracking"
+documentation = "https://docs.rs/bevy_progress_tracking"
+keywords = ["bevy", "gamedev"]
+categories = ["game-development"]
+readme = "README.md"
