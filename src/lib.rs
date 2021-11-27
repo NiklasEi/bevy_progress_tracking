@@ -69,7 +69,7 @@ impl TaskProgress {
     }
 }
 
-impl Progress {
+impl <T> Progress<T> {
     /// track the given amount of tasks of wich some can already be completed
     pub fn track(&mut self, tasks: usize, done: usize) {
         self.current.tasks += tasks;
